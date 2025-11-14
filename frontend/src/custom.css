@@ -1,0 +1,64 @@
+:root {
+  --mint-pastel: #B2EBF2;
+  --gray-dark: #495057;
+  --gray-medium: #ADB5BD;
+  --gray-light: #F8F9FA;
+  --gray-lighter: #E9ECEF;
+}
+
+/* Override Bootstrap variables or classes */
+.navbar.bg-light { /* Changed from bg-dark to bg-light in App.tsx */
+  background-color: var(--gray-lighter) !important; /* Lighter gray for navbar background */
+}
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+  color: var(--gray-dark) !important; /* Darker text for navbar */
+}
+.navbar-light .navbar-toggler-icon {
+  filter: invert(1) grayscale(100%) brightness(50%); /* Adjust toggler icon for light background */
+}
+
+.btn-primary {
+  background-color: var(--mint-pastel) !important;
+  border-color: var(--mint-pastel) !important;
+  color: var(--gray-dark) !important; /* Dark text on mint button */
+}
+.btn-primary:hover {
+  background-color: #80DEEA !important; /* Slightly darker mint on hover */
+  border-color: #80DEEA !important;
+}
+
+.btn-outline-primary {
+  color: var(--mint-pastel) !important;
+  border-color: var(--mint-pastel) !important;
+}
+.btn-outline-primary:hover {
+  background-color: #A8D1C2 !important;
+  color: var(--gray-dark) !important;
+}
+
+.btn-success { /* For answer submit button */
+  background-color: var(--mint-pastel) !important;
+  border-color: var(--mint-pastel) !important;
+  color: var(--gray-dark) !important;
+}
+.btn-success:hover {
+  background-color: #A8D1C2 !important;
+  border-color: #A8D1C2 !important;
+}
+
+.bg-primary { /* For card headers */
+  background-color: var(--mint-pastel) !important;
+  color: var(--gray-dark) !important; /* Dark text on mint header */
+}
+
+.alert-info {
+  background-color: var(--gray-lighter) !important;
+  border-color: var(--gray-medium) !important;
+  color: var(--gray-dark) !important;
+}
+
+/* General text color */
+body {
+    color: var(--gray-dark);
+}
