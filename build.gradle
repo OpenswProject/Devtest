@@ -23,10 +23,6 @@ node {
     nodeProjectDir = file('frontend')
 }
 
-tasks.named('npm_run_build', com.github.gradle.node.npm.task.NpmTask) {
-    args += ['--loglevel', 'verbose']
-}
-
 repositories {
     mavenCentral()
 }
