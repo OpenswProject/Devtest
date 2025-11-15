@@ -57,17 +57,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// This task builds the frontend and copies it into the Spring Boot resources directory
-task copyFrontend(type: Copy) {
-    dependsOn 'npm_run_build'
-    from 'frontend/build'
-    into 'build/resources/main/static'
-}
 
-// Make the 'processResources' task depend on our new 'copyFrontend' task
-tasks.named('processResources') {
-    dependsOn 'copyFrontend'
-}
 
 // The bootJar task will now automatically include the frontend files from the resources.
 bootJar {
