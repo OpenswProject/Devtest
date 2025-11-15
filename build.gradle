@@ -23,7 +23,7 @@ node {
     nodeProjectDir = file('frontend')
 }
 
-tasks.named('npmRunBuild', com.github.gradle.node.npm.task.NpmTask) {
+tasks.named('npm_run_build', com.github.gradle.node.npm.task.NpmTask) {
     args += ['--loglevel', 'verbose']
 }
 
