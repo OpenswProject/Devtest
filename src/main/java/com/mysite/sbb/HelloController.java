@@ -11,5 +11,8 @@ public class HelloController {
         return "Hello, Spring!-!";
     }
 
-
+    @GetMapping("/healthz")
+    public String healthz() {
+        return "OK";
+    }
 }
