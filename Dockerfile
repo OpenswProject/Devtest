@@ -22,6 +22,7 @@ RUN chmod +x ./gradlew
     WORKDIR /app/frontend
     RUN npm install --loglevel verbose
     RUN npm install --save-dev @types/react --loglevel verbose
+    RUN npm install --save-dev @types/react-dom --loglevel verbose
     RUN npm run build --loglevel verbose
     WORKDIR /app
 
