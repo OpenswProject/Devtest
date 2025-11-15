@@ -15,16 +15,7 @@ RUN chmod +x ./gradlew
 # JAR 빌드
     
 
-    # Install Node.js and npm
-    RUN apt-get update && apt-get install -y nodejs npm
-
-    # 프론트엔드 의존성 설치 및 빌드 (자세한 로그 출력)
-    WORKDIR /app/frontend
-    RUN npm install --loglevel verbose
-    RUN npm install --save-dev @types/react --loglevel verbose
-    RUN npm install --save-dev @types/react-dom --loglevel verbose
-    RUN npm run build --loglevel verbose
-    WORKDIR /app
+    
 
     # Spring Boot 애플리케이션 빌드
     RUN gradle bootJar --no-daemon
