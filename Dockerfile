@@ -16,7 +16,7 @@ RUN chmod +x ./gradlew
     
 
     # Spring Boot 애플리케이션 빌드
-    RUN gradle bootJar --no-daemon
+    RUN gradle bootJar --no-daemon --info
 
 
 # 2) 실행 전용 이미지
