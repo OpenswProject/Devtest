@@ -21,6 +21,7 @@ RUN chmod +x ./gradlew
     # 프론트엔드 의존성 설치 및 빌드 (자세한 로그 출력)
     WORKDIR /app/frontend
     RUN npm install --loglevel verbose
+    RUN npm install --save-dev @types/react --loglevel verbose
     RUN npm run build --loglevel verbose
     WORKDIR /app
 
