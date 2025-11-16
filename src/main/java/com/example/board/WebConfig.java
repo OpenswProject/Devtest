@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 모든 경로에 대해
-                .allowedOrigins("https://devtest-theta-six.vercel.app", "http://localhost:3000") // Vercel, localhost 허용
+                .allowedOriginPatterns("*") // 모든 Origin 허용 (디버깅용)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
                 .allowedHeaders("*") // 모든 헤더를 허용
                 .allowCredentials(true) // 자격 증명 허용
