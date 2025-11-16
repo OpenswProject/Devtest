@@ -10,7 +10,11 @@ const QuestionCreate: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const apiBaseUrl = process.env.REACT_APP_API_URL || '';
-        axios.post(`${apiBaseUrl}/api/question/create`, { subject, content })
+        axios.post(`${apiBaseUrl}/api/question/create`, { subject, content }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(() => {
                 navigate('/'); // Redirect to the list page on success
             })
