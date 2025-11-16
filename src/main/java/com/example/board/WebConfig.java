@@ -1,21 +1,28 @@
 package com.example.board;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import java.util.Arrays;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // 모든 경로에 대해
-                .allowedOriginPatterns(
-                        "https://devtest-*.vercel.app",
-                        "http://localhost:3000")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
-                .allowedHeaders("*") // 모든 헤더를 허용
-                .allowCredentials(true) // 자격 증명 허용
-                .maxAge(3600);
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOriginPattern("https://devtest-theta-six.vercel.app");
+        config.addAllowedOriginPattern("https://devtest-*.vercel.app");
+        config.addAllowedOriginPattern("http://localhost:3000");
+        config.addAllowedHeader("*");
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setMaxAge(3600L);
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 }
