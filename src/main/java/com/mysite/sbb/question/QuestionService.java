@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import com.mysite.sbb.DataNotFoundException;
@@ -32,6 +34,7 @@ public class QuestionService {
         q.setSubject(subject);
         q.setContent(content);
         q.setCreateDate(LocalDateTime.now());
+        q.setAnswerList(new ArrayList<>()); // Initialize the list
         return this.questionRepository.save(q);
     }
 
