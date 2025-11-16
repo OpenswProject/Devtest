@@ -14,7 +14,8 @@ const QuestionCreate: React.FC = () => {
         axios.post(`${apiBaseUrl}/api/question/create`, { subject, content }, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
         })
             .then(() => {
                 navigate('/'); // Redirect to the list page on success
