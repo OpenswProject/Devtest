@@ -9,6 +9,7 @@ const QuestionCreate: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        // eslint-disable-next-line no-unused-vars
         const apiBaseUrl = process.env.REACT_APP_API_URL || '';
         axios.post(`${apiBaseUrl}/api/question/create`, { subject, content }, {
             headers: {
