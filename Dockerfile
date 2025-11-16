@@ -1,35 +1,36 @@
-# 1) Gradle로 Spring Boot JAR 빌드
+# Stage 1: Build the application using Gradle
 FROM gradle:8-jdk17 AS builder
 WORKDIR /app
 
-# Gradle 관련 파일 먼저 복사 (캐시 최적화)
-COPY build.gradle settings.gradle gradlew gradlew.bat ./
+# Gradle wrapper와 빌드 설정 파일을 먼저 복사합니다.
+COPY gradlew ./
 COPY gradle ./gradle
+COPY build.gradle settings.gradle ./
 
-# 전체 프로젝트 복사
-COPY . .
-
-# gradlew 실행 권한 (중요)
+# Gradle wrapper에 실행 권한을 부여합니다.
 RUN chmod +x ./gradlew
 
-# JAR 빌드
-    
+# 의존성을 먼저 다운로드하여 Docker 캐시를 활용합니다.
+# (build.gradle이 변경될 때만 이 단계가 다시 실행됩니다.)
+RUN ./gradlew dependencies --no-daemon
 
-    
+# 나머지 소스 코드를 복사합니다.
+COPY src ./src
+COPY frontend ./frontend
 
-    # Spring Boot 애플리케이션 빌드
-    RUN gradle bootJar --no-daemon
+# 애플리케이션을 빌드합니다. (CI/CD 환경에서는 테스트를 생략하여 빌드 속도 향상)
+RUN ./gradlew bootJar -x test --no-daemon
 
-
-# 2) 실행 전용 이미지
+# Stage 2: Create the final, lightweight runtime image
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
-# builder에서 만든 jar 가져오기
+# Render가 PORT 환경 변수를 자동으로 설정해줍니다.
+# EXPOSE는 문서화 목적이며, 실제 앱은 $PORT로 실행됩니다.
+EXPOSE 10000
+
+# 빌드 스테이지에서 생성된 .jar 파일을 복사합니다.
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# 포트 오픈 (Spring Boot)
-EXPOSE 8080
-
-# 실행
+# 애플리케이션을 실행합니다.
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
