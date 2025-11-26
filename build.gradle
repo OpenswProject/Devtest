@@ -46,7 +46,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     // SQLite
-    implementation 'com.h2database:h2'
+    // implementation 'com.h2database:h2'
+    runtimeOnly 'org.postgresql:postgresql'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'org.junit.jupiter:junit-jupiter'
