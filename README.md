@@ -10,6 +10,7 @@ Rebuild architecture
 <img width="185" height="94" alt="image" src="https://github.com/user-attachments/assets/450db791-608f-4974-ad0c-125d46e676d2" />
 <img width="90" height="80" alt="image" src="https://github.com/user-attachments/assets/4f2b83bd-2806-4c97-93a1-0dadcffe6018" />
 <img width="290" height="80" alt="image" src="https://github.com/user-attachments/assets/e2852213-b45d-4be7-a232-761b5d3e7750" />
+<img width="99" height="111" alt="image" src="https://github.com/user-attachments/assets/7cda9f83-8396-44d3-acca-57b14aa6dd45" />
 
 REST API (Back <-json-> Front)    
 
@@ -17,7 +18,7 @@ REST API (Back <-json-> Front)
 
 - Front )  typescript, React
 
-- DBMS ) H2  => PostgreSQL [진행중]
+- DBMS ) PostgreSQL
 
 - Extra ) uptimerobot (monitoring service), Google Identity Services (GIS) login [진행중]
 
@@ -33,5 +34,8 @@ REST API (Back <-json-> Front)
 11.16 Vercel(Live) Render(:CORS Error)  
 
 11.17 Vercel(Live) Render(Live)  
+
+
+11.17 Vercel(Live) Render(Live_PostgreSQL 변경)  
 
 
