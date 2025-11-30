@@ -20,7 +20,7 @@ REST API (Back <-json-> Front)
 
 - DBMS ) PostgreSQL
 
-- Extra ) uptimerobot (monitoring service), Google Identity Services (GIS) login [진행중]
+- Extra ) uptimerobot (monitoring service)
 
 
 
